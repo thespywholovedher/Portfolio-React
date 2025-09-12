@@ -1,0 +1,45 @@
+.size-medium {
+  width: 8rem;
+  height: 8rem;
+}
+
+.size-small {
+  width: 4rem;
+  height: 4rem;
+}
+
+.circle {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 3rem;
+  border-radius: 50%;
+}
+
+.circle-button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 100%;
+	font-size: 1.6rem;
+	font-weight: bolder;
+}
+
+.circle-button:active {
+	background-color: rgb(25, 97, 179);
+}
+
+.row {
+	display: flex;
+	align-items: end;
+}
+
+.primary-color {
+	color: #fdfdfd;
+  background-color: #1588bd;
+}
+
+.secondary-color {
+	background-color: #fdfdfd;
+	color: #1588bd;
+}
