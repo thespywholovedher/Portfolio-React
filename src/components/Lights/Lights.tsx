@@ -24,7 +24,7 @@ const Light = (props:{id:number, on: boolean, color:string, toggle: (id:number) 
     opacity: props.on ? 1 : .1
   };
   return (
-    <button onClick={() => props.toggle(props.id)} style={style} className={"box"}>10</button>
+    <button onClick={() => props.toggle(props.id)} style={style} className={"box"}>{props.color}</button>
   )
 }
 

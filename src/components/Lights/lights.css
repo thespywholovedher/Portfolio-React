@@ -1,7 +1,12 @@
 .flex-container {
     display: flex;
     flex-wrap: wrap;
-    width: 40rem;
+    justify-content: space-evenly;
+    align-items: center;
+    align-content: space-around;
+    row-gap: 1rem;
+    padding: 1rem 0;
+    width: 46rem;
     height: 100%;
     border: 1px solid white;
 }
