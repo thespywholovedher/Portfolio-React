@@ -2,9 +2,9 @@ import React from 'react'
 import './lightsOff.css'
 
 const generateGrid = <T,> (n:number) => {
-  let array:number[][] = 
+  let array:boolean[][] = 
     Array.from({ length: n }, (_, i) => 
-      Array.from({ length: n}, (_, j) => i+j));
+      Array.from({ length: n}, (_, j) => false));
 
   console.log(array)
   return array;
@@ -25,6 +25,13 @@ const Cell = () => {
 const LightsOff = () => {
   const [grid, setGrid] = React.useState(generateGrid(5))
 
+  const toggle = (i: number, j :number) => {
+    setGrid((prevGrid:boolean[][]):boolean[][] => {
+      const copyGrid = [...prevGrid];
+      copyGrid[i][j] = !copyGrid[i][j] 
+      return copyGrid
+    })
+  };
 
   const gridElements:React.JSX.Element[] = []
   for(let i = 0; i < grid.length; i++) {
