@@ -16,9 +16,9 @@ const Grid = (props: React.PropsWithChildren) => {
     )
 }
 
-const Cell = () => {
+const Cell = (props:{on:boolean}) => {
     return (
-      <button className='cell'>3</button>
+      <button className='cell'>{props.on ? "On": "Off"}</button>
     )
 }
 
@@ -36,10 +36,10 @@ const LightsOff = () => {
   const gridElements:React.JSX.Element[] = []
   for(let i = 0; i < grid.length; i++) {
     for (let j = 0; j < grid[i].length; j++) {
-      gridElements.push(<Cell key={i+j*10} />)
+      gridElements.push(<Cell on={false} key={i+j*10} />)
     }
   }
-  const cells = grid.flatMap((e,i) => { return <Cell key={i} />}) 
+  const cells = grid.flatMap((e,i) => { return <Cell on={false} key={i} />}) 
   return (
     <>
       <div>LightsOff</div>
