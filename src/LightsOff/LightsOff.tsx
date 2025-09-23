@@ -1,4 +1,5 @@
 import React from 'react'
+import { array2dCopy } from './ArrayHelper';
 import './lightsOff.css'
 
 const generateGrid = <T,> (n:number) => {
@@ -24,6 +25,9 @@ const Cell = (props:{on:boolean}) => {
 
 const LightsOff = () => {
   const [grid, setGrid] = React.useState(generateGrid(5))
+
+  
+
 
   const toggle = (i: number, j :number) => {
     setGrid((prevGrid:boolean[][]):boolean[][] => {
