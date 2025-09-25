@@ -1,15 +1,6 @@
 import React from 'react'
-import * as ArrayUtil from './ArrayUtil';
 import './lightsOff.css'
-
-const generateGrid = <T,> (n:number) => {
-  let array:boolean[][] = 
-    Array.from({ length: n }, (_, i) => 
-      Array.from({ length: n}, (_, j) => false));
-
-  console.log(array)
-  return array;
-}
+import { createGame, reducer } from './Game';
 
 const Grid = (props: React.PropsWithChildren) => {
     return (
@@ -17,33 +8,28 @@ const Grid = (props: React.PropsWithChildren) => {
     )
 }
 
-const Cell = (props:{on:boolean}) => {
+const Cell = (props:{on:boolean, toggle:() => void}) => {
     return (
-      <button className='cell'>{props.on ? "On": "Off"}</button>
+      <button onClick={props.toggle} className='cell'>{props.on ? "On": "Off"}</button>
     )
 }
 
 const LightsOff = () => {
-  const [grid, setGrid] = React.useState(generateGrid(5))
+  const [gameState, gameStateDispatch] = React.useReducer(reducer , createGame("big"));
 
-  
-  console.log(ArrayUtil.create2dArray(5, 0))
-
-  const toggle = (i: number, j :number) => {
-    setGrid((prevGrid:boolean[][]):boolean[][] => {
-      const copyGrid = [...prevGrid];
-      copyGrid[i][j] = !copyGrid[i][j] 
-      return copyGrid
-    })
-  };
 
   const gridElements:React.JSX.Element[] = []
-  for(let i = 0; i < grid.length; i++) {
-    for (let j = 0; j < grid[i].length; j++) {
-      gridElements.push(<Cell on={false} key={i+j*10} />)
+  for(let i = 0; i < gameState!.grid.length; i++) {
+    for (let j = 0; j < gameState!.grid[i].length; j++) {
+      gridElements.push(
+        <Cell 
+          toggle={() => gameStateDispatch({ type: 'TOGGLE', payload: {x: i, y: j}})} 
+          on={gameState!.grid[i][j]} 
+          key={i+j*10} />
+      )
     }
   }
-  const cells = grid.flatMap((e,i) => { return <Cell on={false} key={i} />}) 
+  
   return (
     <>
       <div>LightsOff</div>
