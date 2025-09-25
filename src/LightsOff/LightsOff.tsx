@@ -10,7 +10,7 @@ const Grid = (props: React.PropsWithChildren) => {
 
 const Cell = (props:{on:boolean, toggle:() => void}) => {
     return (
-      <button onClick={props.toggle} className='cell'>{props.on ? "On": "Off"}</button>
+      <button onClick={props.toggle} className={`cell ${props.on ? 'on' : ''}`}>{props.on ? "On": "Off"}</button>
     )
 }
 
