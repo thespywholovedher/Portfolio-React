@@ -25,7 +25,8 @@ const LightsOff = () => {
         <Cell 
           toggle={() => gameStateDispatch({ type: 'TOGGLE', payload: {x: i, y: j}})} 
           on={gameState!.grid[i][j]} 
-          key={i+j*10} />
+          key={i+j*10} 
+        />
       )
     }
   }

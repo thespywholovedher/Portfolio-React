@@ -29,6 +29,15 @@ export const toggleCell = (grid:boolean[][], x:number, y:number) => {
     return gridCopy
 }
 
+export function isFinished(grid: boolean[][]): boolean {
+    for(let i = 0; i < grid.length; i++){
+        for(let j = 0; j < grid[i].length; j++){
+            if (grid[i][j]) return false;
+        }
+    }
+    return true;
+}
+
 export type GameState = {
     grid: boolean[][],
     offCounter: number
@@ -52,8 +61,7 @@ export type Action<T> = {
 }
 
 
-export const reducer = (state:GameState | undefined, action:Action<Index> | undefined) => {
-    if(action === undefined || state === undefined) throw new Error();
+export const reducer = (state:GameState, action:Action<Index>) : GameState => {
     switch (action.type) {
         case 'TOGGLE':
             console.log("click")
@@ -61,6 +69,6 @@ export const reducer = (state:GameState | undefined, action:Action<Index> | unde
                 grid:toggleCell(state.grid, action.payload.x, action.payload.y),
                 offCounter: 0
             };
-
     }
+    return state;
 }
