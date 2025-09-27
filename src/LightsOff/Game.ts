@@ -69,6 +69,8 @@ export const reducer = (state:GameState, action:Action<Index>) : GameState => {
                 grid:toggleCell(state.grid, action.payload.x, action.payload.y),
                 offCounter: 0
             };
+        case 'RESET':
+            return createGame('large')
     }
     return state;
 }
