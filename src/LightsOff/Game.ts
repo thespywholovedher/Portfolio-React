@@ -64,13 +64,15 @@ export type Action<T> = {
 export const reducer = (state:GameState, action:Action<Index>) : GameState => {
     switch (action.type) {
         case 'TOGGLE':
-            console.log("click")
+            console.log("click");
             return {
                 grid:toggleCell(state.grid, action.payload.x, action.payload.y),
                 offCounter: 0
             };
         case 'RESET':
-            return createGame('large')
+            return createGame('large');
+        case 'WON':
+            console.log("won");
     }
     return state;
 }
